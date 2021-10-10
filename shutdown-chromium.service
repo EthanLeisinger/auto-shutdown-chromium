@@ -1,8 +1,7 @@
 [Unit]
 Description=Shutdown Chromium
 DefaultDependencies=no
-Before=poweroff.target halt.target shutdown.target
-Requires=poweroff.target
+Before=shutdown.target halt.target poweroff.target reboot.target
 
 [Service]
 Type=oneshot
@@ -10,4 +9,4 @@ ExecStart=/bin/shutdown-chromium
 RemainAfterExit=yes
 
 [Install]
-WantedBy=shutdown.target
+WantedBy=shutdown.target halt.target poweroff.target reboot.target
