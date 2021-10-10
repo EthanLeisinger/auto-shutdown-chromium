@@ -16,8 +16,8 @@ You can see more details on setup in the [Setup section](#installsetup)
 Clone this repo to any directory you prefer. Then run the following commands:
 
 ```shell
-sudo ln -s ./shutdown-chromium /bin/
-sudo ln -s ./shutdown-chromium.service /etc/systemd/service/
+sudo ln -s "$PWD/shutdown-chromium" /bin/
+sudo ln -s "$PWD/shutdown-chromium.service" /etc/systemd/service/
 sudo systemctl enable "$PWD/shutdown-chromium.service"
 ```
 
@@ -27,8 +27,8 @@ If you would like to uninstall this script or delete/move this repo, ensure you
 disable the `systemd` service and remove the symlink to the script from `/bin/`. This can be done with:
 
 ```shell
-sudo systemctl diable shutdown-chromium.service
-sudo rm /bin/shutdown-chromium/
+sudo systemctl disable shutdown-chromium.service
+sudo rm /bin/shutdown-chromium
 ```
 
 Once this is complete you are free to delete this repo as you wish.
