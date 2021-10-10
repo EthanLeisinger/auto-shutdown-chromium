@@ -1,0 +1,21 @@
+#! /bin/bash
+
+graceful_shutdown() {
+  echo "Checking if '$1' is running..."
+  ps -C $1 &> /dev/null
+  if [ $? -eq 0 ]; then
+    echo "Shutting down '$1' processess..."
+    killall $1 --wait
+    echo "'$1' processess shut down"
+  else
+    echo "No '$1' process running"
+  fi
+}
+
+process_names=(chrome  chromium brave)
+
+for name in "${process_names[@]}"
+do
+  graceful_shutdown $name
+done
+
